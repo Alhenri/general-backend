@@ -1,27 +1,27 @@
 import { Router } from 'express';
-import data from '../data/portfolio';
+import PortData from '../database/models/portfólio';
 
 const router = Router();
 
-const about_me = router.get('/about_me', (req, res) => {
+const about_me = router.get('/about_me', async (req, res) => {
   const { url, statusCode, statusMessage } = req;
-  console.log(`url: ${url}`);
-  console.log(`status: ${statusCode} - ${statusMessage}`);
-  return res.json(data.about_me);
+  const dbData = await PortData.findById('60df3ad35340e48570652838').exec();
+
+  return res.json(dbData.about_me);
 });
 
-const projects = router.get('/projects', (req, res) => {
+const projects = router.get('/projects', async (req, res) => {
   const { url, statusCode, statusMessage } = req;
-  console.log(`url: ${url}`);
-  console.log(`status: ${statusCode} - ${statusMessage}`);
-  return res.json(data.projects);
+  const dbData = await PortData.findById('60df3ad35340e48570652838').exec();
+
+  return res.json(dbData.projects);
 });
 
-const qualification = router.get('/qualification', (req, res) => {
+const qualification = router.get('/qualification', async (req, res) => {
   const { url, statusCode, statusMessage } = req;
-  console.log(`url: ${url}`);
-  console.log(`status: ${statusCode} - ${statusMessage}`);
-  return res.json(data.qualification);
+  const dbData = await PortData.findById('60df3ad35340e48570652838').exec();
+
+  return res.json(dbData.qualification);
 });
 
 export default { projects, about_me, qualification };
