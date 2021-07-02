@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import routers from './routers';
+import DataBase from './database';
 
 class App {
   public express: express.Application;
@@ -18,8 +18,8 @@ class App {
     this.express.use(express.json());
   }
 
-  private database(): void {
-    // TODO: conexão com banco de dados
+  private database(): any {
+    const database = new DataBase();
   }
 
   private routes(): void {
