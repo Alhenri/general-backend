@@ -5,7 +5,12 @@ const route = Router();
 
 const set_location = route.post('/set_location', async (req, res) => {
   const { body } = req;
-  await recycle_model.create(body);
+  const response = await recycle_model.create(body, (error, data) => {
+    if (error) {
+      return res.status(406).json({ error });
+    }
+    return res.status(201).json({ ...data });
+  });
 });
 
 const get_locations = route.get('/get_locations', async (req, res) => {
