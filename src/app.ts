@@ -23,7 +23,7 @@ class App {
   }
 
   private routes(): void {
-    this.express.use(routers.projects);
+    this.express.use(routers);
   }
 }
 
